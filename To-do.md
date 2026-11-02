@@ -1,8 +1,8 @@
 # To do list. 
 
 ## Player
-- Move with WASD
-- Aim / look with mouse
+- ~~Move with WASD~~
+- ~~Aim / look with mouse~~
 - "E" to pickup / drop
 
 
