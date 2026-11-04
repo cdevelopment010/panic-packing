@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
+@onready var label: Label = $CanvasLayer/BoxContainer/Label
+
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -12,7 +14,19 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	handle_camera_rotation()
+	handle_camera_rotation()	
+	
+	if %SeeCast.is_colliding():
+		print("Raycast collide")
+		var target = %SeeCast.get_collider()
+		if target != null and target.has_method("interact"):
+			print("You can pick this item")
+			label.show()
+			if Input.is_action_just_pressed("interact"):
+				target.interact()
+		else: 
+			label.hide()
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -33,6 +47,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
 	
 func _input(event: InputEvent) -> void: 
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
