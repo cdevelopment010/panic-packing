@@ -2,8 +2,9 @@ extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var label: Label = $CanvasLayer/BoxContainer/Label
+@onready var marker_3d: Marker3D = $CameraPivot/Marker3D
 
-signal drop_item(object)
+signal drop_item(object, force)
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -20,19 +21,26 @@ func _physics_process(delta: float) -> void:
 	handle_camera_rotation()	
 	
 	label.hide()
+	if Input.is_action_just_pressed("interact") and holding_item and current_object != null:
+		print("drop item")
+		drop_item.emit(current_object, 10)
+		holding_item = false
+		current_object = null
+		
+		
 	if %SeeCast.is_colliding():
-		var target: StaticBody3D = %SeeCast.get_collider()
+		var target: RigidBody3D = %SeeCast.get_collider()
 		if target != null and target.is_in_group("items"):
 			label.show()
 			if Input.is_action_just_pressed("interact") and not holding_item:
-				target.reparent(self)
+				target.reparent(marker_3d)
+				target.freeze = true
+				target.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 				current_object = target
 				target.set_collision_layer_value(1,false)
 				holding_item = true
 				#target.interact()
-	if Input.is_action_just_pressed("interact") and holding_item and current_object != null:
-		print("drop item")
-		drop_item.emit(current_object)
+	
 		
 	# Add the gravity.
 	if not is_on_floor():

@@ -3,11 +3,14 @@
 ## Player
 - ~~Move with WASD~~
 - ~~Aim / look with mouse~~
-- "E" to pickup / drop
+- ~~"E" to pickup / drop~~
+- Hold to launch
+- Timer
+- Suitcase area
 
 
 ## Room
-- Placeholder walls
+- ~~Placeholder walls~~
 - Placeholder bed & objects
 
 
@@ -17,3 +20,4 @@
 - Suitcase
 - Walls & room
 - Items
+  - ~~Laptop~~ 
