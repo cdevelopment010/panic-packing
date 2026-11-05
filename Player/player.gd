@@ -3,11 +3,14 @@ extends CharacterBody3D
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var label: Label = $CanvasLayer/BoxContainer/Label
 
+signal drop_item(object)
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var mouse_motion := Vector2.ZERO
+var holding_item: bool = false
+var current_object
 
 func _ready() -> void: 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -16,16 +19,20 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	handle_camera_rotation()	
 	
+	label.hide()
 	if %SeeCast.is_colliding():
-		print("Raycast collide")
-		var target = %SeeCast.get_collider()
-		if target != null and target.has_method("interact"):
-			print("You can pick this item")
+		var target: StaticBody3D = %SeeCast.get_collider()
+		if target != null and target.is_in_group("items"):
 			label.show()
-			if Input.is_action_just_pressed("interact"):
-				target.interact()
-		else: 
-			label.hide()
+			if Input.is_action_just_pressed("interact") and not holding_item:
+				target.reparent(self)
+				current_object = target
+				target.set_collision_layer_value(1,false)
+				holding_item = true
+				#target.interact()
+	if Input.is_action_just_pressed("interact") and holding_item and current_object != null:
+		print("drop item")
+		drop_item.emit(current_object)
 		
 	# Add the gravity.
 	if not is_on_floor():
