@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dxl4g1p8c7mk7"]
+
+[ext_resource type="Script" uid="uid://bopn1h4rbt4cq" path="res://Level/hud.gd" id="1_3rfm3"]
+
+[node name="HUD" type="Control" unique_id=964813875]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3rfm3")
+
+[node name="GameTimer" type="Timer" parent="." unique_id=400513828]
+autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=906386964]
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 23.0
+text = "00:00"
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

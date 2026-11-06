@@ -11,6 +11,8 @@ const JUMP_VELOCITY = 4.5
 
 var mouse_motion := Vector2.ZERO
 var holding_item: bool = false
+var charging_item: bool = false
+var force: float = 0.0
 var current_object
 
 func _ready() -> void: 
@@ -21,25 +23,37 @@ func _physics_process(delta: float) -> void:
 	handle_camera_rotation()	
 	
 	label.hide()
-	if Input.is_action_just_pressed("interact") and holding_item and current_object != null:
-		print("drop item")
-		drop_item.emit(current_object, 10)
-		holding_item = false
-		current_object = null
-		
-		
 	if %SeeCast.is_colliding():
 		var target: RigidBody3D = %SeeCast.get_collider()
 		if target != null and target.is_in_group("items"):
 			label.show()
-			if Input.is_action_just_pressed("interact") and not holding_item:
+	
+	if Input.is_action_just_pressed("interact"): 
+		if not charging_item and holding_item: 
+			charging_item = true
+		elif %SeeCast.is_colliding() and not holding_item: 
+			
+			var target: RigidBody3D = %SeeCast.get_collider()
+			if target != null and target.is_in_group("items"):
+				charging_item = false
+				force = 0.0
 				target.reparent(marker_3d)
 				target.freeze = true
 				target.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 				current_object = target
 				target.set_collision_layer_value(1,false)
 				holding_item = true
-				#target.interact()
+	if charging_item and force < 20.0: 
+		force += delta * 10
+		force = clampf(force, 0.5, 20.0)
+	
+	if Input.is_action_just_released("interact") and charging_item: 
+		drop_item.emit(current_object, force)
+		charging_item = false
+		force = 0.0
+		holding_item = false
+		current_object = null	
+	
 	
 		
 	# Add the gravity.
@@ -69,7 +83,10 @@ func _input(event: InputEvent) -> void:
 		mouse_motion = -event.relative * 0.001 # 0.001 can be thought of as sensistivity. Negative so the camera moves in the same way. 
 	if event.is_action_pressed("ui_cancel"): 
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		
+	if (event is InputEventMouseButton 
+		and event.button_index == MouseButton.MOUSE_BUTTON_LEFT 
+		and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 func handle_camera_rotation() -> void: 
 	#rotate player
 	rotate_y(mouse_motion.x)

@@ -4,9 +4,13 @@
 - ~~Move with WASD~~
 - ~~Aim / look with mouse~~
 - ~~"E" to pickup / drop~~
-- Hold to launch
-- Timer
-- Suitcase area
+- ~~Hold to launch~~
+- ~~Timer~~
+- ~~Suitcase area~~
+- Game over
+  - time out
+  - all items packs
+
 
 
 ## Room
@@ -16,7 +20,7 @@
 
 
 ## Blender
-- Character model
+- Character model (maybe not needed as first person)
 - Suitcase
 - Walls & room
 - Items

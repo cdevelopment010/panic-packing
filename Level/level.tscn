@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dadordkfbmju4" path="res://Player/player.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://b5bgkhvvawyjo" path="res://Level/level.gd" id="1_qmtf6"]
+[ext_resource type="PackedScene" uid="uid://dxl4g1p8c7mk7" path="res://Level/hud.tscn" id="2_52x1o"]
+[ext_resource type="PackedScene" uid="uid://dhb8nbqwgnk7" path="res://Level/suitcase.tscn" id="3_uawph"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6mkr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -36,13 +38,19 @@ points = PackedVector3Array(-10.666668, -2.666667, -0.4166667, 10.666668, 2.6666
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uawph"]
 points = PackedVector3Array(-10.666668, -2.666667, -0.4166667, 10.666668, 2.666667, 0.5833333, 10.666668, 2.666667, -0.4166667, -10.666668, 2.666667, 0.5833333, 10.666668, -2.666667, 0.5833333, 10.666668, -2.666667, -0.4166667, -10.666668, 2.666667, -0.4166667, -10.666668, -2.666667, 0.5833333)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmtf6"]
+albedo_color = Color(0.9144158, 0.42102697, 0.4182364, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_rtkpu"]
+material = SubResource("StandardMaterial3D_qmtf6")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_52x1o"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="Level" type="Node3D" unique_id=1200555673]
 script = ExtResource("1_qmtf6")
+
+[node name="HUD" parent="." unique_id=964813875 instance=ExtResource("2_52x1o")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=961055816]
 environment = SubResource("Environment_uawph")
@@ -128,5 +136,8 @@ mesh = SubResource("BoxMesh_rtkpu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupItem" unique_id=1180473221]
 shape = SubResource("ConvexPolygonShape3D_52x1o")
+
+[node name="Suitcase" parent="." unique_id=201595260 instance=ExtResource("3_uawph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.2631473, 0)
 
 [connection signal="drop_item" from="Player" to="." method="_on_player_drop_item"]
