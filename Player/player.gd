@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 	
 	label.hide()
 	if %SeeCast.is_colliding():
-		var target: RigidBody3D = %SeeCast.get_collider()
-		if target != null and target.is_in_group("items"):
+		var target = %SeeCast.get_collider()
+		if target != null and target is RigidBody3D and target.is_in_group("items"):
 			label.show()
 	
 	if Input.is_action_just_pressed("interact"): 
@@ -33,8 +33,8 @@ func _physics_process(delta: float) -> void:
 			charging_item = true
 		elif %SeeCast.is_colliding() and not holding_item: 
 			
-			var target: RigidBody3D = %SeeCast.get_collider()
-			if target != null and target.is_in_group("items"):
+			var target = %SeeCast.get_collider()
+			if target != null  and target is RigidBody3D and target.is_in_group("items"):
 				charging_item = false
 				force = 0.0
 				target.reparent(marker_3d)

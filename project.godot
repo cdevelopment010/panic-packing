@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Panic Packing"
-run/main_scene="uid://dadordkfbmju4"
+run/main_scene="uid://csf8j0abstbf5"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

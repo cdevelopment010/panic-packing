@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dwhg6f8gjllot"]
+
+[ext_resource type="PackedScene" uid="uid://cyn5u4cpv2bu6" path="res://Level/item.tscn" id="1_ovjgh"]
+[ext_resource type="PackedScene" uid="uid://chfwdmoocotcq" path="res://Assets/Items/Spikey Dino.blend" id="2_ln8cs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ln8cs"]
+size = Vector3(0.4507904, 0.5560303, 0.6328125)
+
+[node name="DinoItem" unique_id=960152825 groups=["items"] instance=ExtResource("1_ovjgh")]
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0008676648, 0.28647178, -0.0048828125)
+shape = SubResource("BoxShape3D_ln8cs")
+
+[node name="Visuals" parent="." index="1" unique_id=963336991]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Spikey Dino" parent="Visuals" index="0" unique_id=357894672 instance=ExtResource("2_ln8cs")]
+
+[node name="Camera" parent="Visuals/Spikey Dino" index="0" unique_id=123840874]
+visible = false
+
+[node name="Light" parent="Visuals/Spikey Dino" index="15" unique_id=1121388861]
+visible = false
+
+[node name="Plane" parent="Visuals/Spikey Dino" index="16" unique_id=1253215304]
+visible = false
+
+[editable path="Visuals/Spikey Dino"]

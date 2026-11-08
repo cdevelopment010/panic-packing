@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dy8w1n2o0ftut"]
+
+[ext_resource type="PackedScene" uid="uid://cyn5u4cpv2bu6" path="res://Level/item.tscn" id="1_dpgmi"]
+[ext_resource type="PackedScene" uid="uid://cc7fxe5lw2ixd" path="res://Assets/Items/laptop.blend" id="2_xr1ab"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52x1o"]
+size = Vector3(0.78460693, 0.1239624, 0.61213684)
+
+[node name="LaptopItem" unique_id=960152825 groups=["items"] instance=ExtResource("1_dpgmi")]
+mass = 0.5
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0027770996, 0.0050354004, 0.00957489)
+shape = SubResource("BoxShape3D_52x1o")
+
+[node name="laptop" parent="Visuals" parent_id_path=PackedInt32Array(963336991) index="0" unique_id=200426378 instance=ExtResource("2_xr1ab")]
+
+[node name="Camera" parent="Visuals/laptop" index="0" unique_id=329029556]
+visible = false
+
+[node name="Light" parent="Visuals/laptop" index="2" unique_id=2024363734]
+visible = false
+
+[editable path="Visuals/laptop"]

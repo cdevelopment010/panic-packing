@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dyf5hfo8nnvwt"]
+
+[ext_resource type="PackedScene" uid="uid://cyn5u4cpv2bu6" path="res://Level/item.tscn" id="1_ggwiu"]
+[ext_resource type="PackedScene" uid="uid://cmn4mge20ark7" path="res://Assets/Items/Orange Critter.blend" id="2_u2an6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xr1ab"]
+size = Vector3(2.1959229, 2.6068115, 2.289917)
+
+[node name="OrangeCritterItem" unique_id=960152825 groups=["items"] instance=ExtResource("1_ggwiu")]
+mass = 2.0
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]
+transform = Transform3D(0.49946475, 0, -0.023129432, 0, 0.5, 0, 0.023129432, 0, 0.49946475, -0.016842563, 0.67963314, -0.17433652)
+shape = SubResource("BoxShape3D_xr1ab")
+
+[node name="Visuals" parent="." index="1" unique_id=963336991]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Orange Critter" parent="Visuals" index="0" unique_id=2027784093 instance=ExtResource("2_u2an6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0045175552, -0.017247677, 0.008269072)
+
+[node name="Camera" parent="Visuals/Orange Critter" index="0" unique_id=1647833141]
+visible = false
+
+[node name="Light" parent="Visuals/Orange Critter" index="10" unique_id=1528477703]
+visible = false
+
+[node name="Plane" parent="Visuals/Orange Critter" index="11" unique_id=638920634]
+visible = false
+
+[editable path="Visuals/Orange Critter"]
