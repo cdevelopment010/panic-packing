@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dkpey45vcfncr"]
+
+[ext_resource type="Script" uid="uid://csbdn7blndjyd" path="res://packing_manager.gd" id="1_6grg2"]
+
+[node name="PackingManager" type="Node" unique_id=797135572]
+script = ExtResource("1_6grg2")
