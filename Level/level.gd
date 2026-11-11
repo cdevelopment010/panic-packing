@@ -17,3 +17,7 @@ func _on_player_drop_item(object: RigidBody3D, force: float = 10.0) -> void:
 	object.reparent(self)
 	var direction = -$Player.camera_pivot.global_transform.basis.z
 	object.apply_central_impulse(direction * force)
+
+
+func _on_suitcase_item_packed(item: Variant) -> void:
+	$PackingManager.pack_item(item)

@@ -1,5 +1,6 @@
 extends Area3D
 
+signal item_packed(item)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,5 +14,6 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("items"):
+		item_packed.emit(body)
 		body.call_deferred("queue_free")
 		# Need to store what items have been packed. 
