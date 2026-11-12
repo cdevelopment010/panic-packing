@@ -21,3 +21,7 @@ func _on_player_drop_item(object: RigidBody3D, force: float = 10.0) -> void:
 
 func _on_suitcase_item_packed(item: Variant) -> void:
 	$PackingManager.pack_item(item)
+
+
+func _on_hud_game_over() -> void:
+	get_tree().paused = true

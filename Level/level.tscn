@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dadordkfbmju4" path="res://Player/player.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://b5bgkhvvawyjo" path="res://Level/level.gd" id="1_qmtf6"]
-[ext_resource type="PackedScene" uid="uid://dxl4g1p8c7mk7" path="res://Level/hud.tscn" id="2_52x1o"]
+[ext_resource type="PackedScene" uid="uid://dxl4g1p8c7mk7" path="res://Level/level_timer.tscn" id="2_52x1o"]
 [ext_resource type="PackedScene" uid="uid://dhb8nbqwgnk7" path="res://Level/suitcase.tscn" id="3_uawph"]
+[ext_resource type="PackedScene" uid="uid://c7litlavn1lo5" path="res://HUD/pause_menu.tscn" id="3_wqlfs"]
 [ext_resource type="PackedScene" uid="uid://dyf5hfo8nnvwt" path="res://Level/Items/orange_critter_item.tscn" id="5_nk1il"]
 [ext_resource type="PackedScene" uid="uid://dy8w1n2o0ftut" path="res://Level/Items/LaptopItem.tscn" id="6_nk1il"]
 [ext_resource type="PackedScene" uid="uid://dwhg6f8gjllot" path="res://Level/Items/dino_item.tscn" id="7_d6qko"]
@@ -42,19 +43,13 @@ points = PackedVector3Array(-10.666668, -2.666667, -0.4166667, 10.666668, 2.6666
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uawph"]
 points = PackedVector3Array(-10.666668, -2.666667, -0.4166667, 10.666668, 2.666667, 0.5833333, 10.666668, 2.666667, -0.4166667, -10.666668, 2.666667, 0.5833333, 10.666668, -2.666667, 0.5833333, 10.666668, -2.666667, -0.4166667, -10.666668, 2.666667, -0.4166667, -10.666668, -2.666667, 0.5833333)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmtf6"]
-albedo_color = Color(0.9144158, 0.42102697, 0.4182364, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rtkpu"]
-material = SubResource("StandardMaterial3D_qmtf6")
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_52x1o"]
-points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
-
 [node name="Level" type="Node3D" unique_id=1200555673]
 script = ExtResource("1_qmtf6")
 
-[node name="HUD" parent="." unique_id=964813875 instance=ExtResource("2_52x1o")]
+[node name="LevelTimer" parent="." unique_id=964813875 instance=ExtResource("2_52x1o")]
+level_time = 10
+
+[node name="PauseMenu" parent="." unique_id=943308884 instance=ExtResource("3_wqlfs")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=961055816]
 environment = SubResource("Environment_uawph")
@@ -132,15 +127,6 @@ light_energy = 2.426
 spot_range = 10.0
 spot_attenuation = 0.2
 
-[node name="PickupItem" type="RigidBody3D" parent="." unique_id=1028235893 groups=["items"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4156594, 0.5017357, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PickupItem" unique_id=553727428]
-mesh = SubResource("BoxMesh_rtkpu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupItem" unique_id=1180473221]
-shape = SubResource("ConvexPolygonShape3D_52x1o")
-
 [node name="Suitcase" parent="." unique_id=201595260 instance=ExtResource("3_uawph")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.2631473, 0)
 
@@ -163,5 +149,6 @@ id = "0"
 
 [node name="PackingManager" parent="." unique_id=797135572 instance=ExtResource("8_22cqp")]
 
+[connection signal="game_over" from="LevelTimer" to="." method="_on_hud_game_over"]
 [connection signal="drop_item" from="Player" to="." method="_on_player_drop_item"]
 [connection signal="item_packed" from="Suitcase" to="." method="_on_suitcase_item_packed"]

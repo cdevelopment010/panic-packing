@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dxl4g1p8c7mk7"]
 
-[ext_resource type="Script" uid="uid://bopn1h4rbt4cq" path="res://Level/hud.gd" id="1_3rfm3"]
+[ext_resource type="Script" uid="uid://bopn1h4rbt4cq" path="res://Level/level_timer.gd" id="1_3rfm3"]
 
-[node name="HUD" type="Control" unique_id=964813875]
+[node name="LevelTimer" type="Control" unique_id=964813875]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

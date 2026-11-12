@@ -1,10 +1,9 @@
 extends Control
 
-
-var level_time : int = 60
+signal game_over()
+@export var level_time : int = 60
 
 func _ready() -> void: 
-	level_time = 60
 	update_timer_text()
 
 
@@ -17,6 +16,7 @@ func update_timer_text():
 func _on_game_timer_timeout() -> void:
 	if level_time <= 0: 
 		print("Game Over")
+		game_over.emit()
 	else: 
 		level_time -= 1
 		update_timer_text()

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dcv0wvvxua3fb"]
+
+[ext_resource type="Script" uid="uid://chne6n1147q1g" path="res://HUD/hud.gd" id="1_h61sl"]
+
+[node name="HUD" type="Control" unique_id=200381096]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h61sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1157485778]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=847349109]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1733457689]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Panic Packing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=817853951]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
