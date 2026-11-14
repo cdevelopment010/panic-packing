@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ccwp8hahavmr1"]
+
+[ext_resource type="Script" uid="uid://br1w87r3gn2ul" path="res://Level/door.gd" id="1_55yph"]
+[ext_resource type="PackedScene" uid="uid://boq7cxyb3j3ed" path="res://Assets/Room/door2.glb" id="1_i5ruw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t3ff"]
+size = Vector3(1.4533691, 2.561798, 1.4619751)
+
+[node name="Door" type="Area3D" unique_id=768014023 groups=["door"]]
+script = ExtResource("1_55yph")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1834943592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006225586, 1.2518768, 0.57144165)
+shape = SubResource("BoxShape3D_6t3ff")
+
+[node name="door2" parent="." unique_id=446597848 instance=ExtResource("1_i5ruw")]
+
+[node name="Control" type="Control" parent="." unique_id=269979506]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=936656791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer" unique_id=106179511]
+visible = false
+layout_mode = 2
+text = "Leave!"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

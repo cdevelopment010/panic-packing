@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dy8w1n2o0ftut" path="res://Level/Items/LaptopItem.tscn" id="6_nk1il"]
 [ext_resource type="PackedScene" uid="uid://dwhg6f8gjllot" path="res://Level/Items/dino_item.tscn" id="7_d6qko"]
 [ext_resource type="PackedScene" uid="uid://dkpey45vcfncr" path="res://packing_manager.tscn" id="8_22cqp"]
+[ext_resource type="PackedScene" uid="uid://ccwp8hahavmr1" path="res://Level/door.tscn" id="10_py82k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6mkr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -48,8 +49,6 @@ script = ExtResource("1_qmtf6")
 
 [node name="LevelTimer" parent="." unique_id=964813875 instance=ExtResource("2_52x1o")]
 level_time = 10
-
-[node name="PauseMenu" parent="." unique_id=943308884 instance=ExtResource("3_wqlfs")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=961055816]
 environment = SubResource("Environment_uawph")
@@ -149,6 +148,13 @@ id = "0"
 
 [node name="PackingManager" parent="." unique_id=797135572 instance=ExtResource("8_22cqp")]
 
+[node name="Door" parent="." unique_id=768014023 instance=ExtResource("10_py82k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.944774)
+
+[node name="PauseMenu" parent="." unique_id=943308884 instance=ExtResource("3_wqlfs")]
+
 [connection signal="game_over" from="LevelTimer" to="." method="_on_hud_game_over"]
 [connection signal="drop_item" from="Player" to="." method="_on_player_drop_item"]
 [connection signal="item_packed" from="Suitcase" to="." method="_on_suitcase_item_packed"]
+[connection signal="leave_game" from="Door" to="." method="_on_door_leave_game"]
+[connection signal="restart" from="PauseMenu" to="." method="restart"]

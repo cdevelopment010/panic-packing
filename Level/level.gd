@@ -24,4 +24,17 @@ func _on_suitcase_item_packed(item: Variant) -> void:
 
 
 func _on_hud_game_over() -> void:
+	game_over()
+
+
+func _on_door_leave_game() -> void:
+	game_over()
+	
+	
+func game_over(): 
+	#get_tree().change_scene_to_file("res://main.tscn")
 	get_tree().paused = true
+	# Some sort of score pop-up
+	
+func restart():
+	get_tree().reload_current_scene()

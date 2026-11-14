@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://bkjn52pjswso4"]
 
+[ext_resource type="Script" uid="uid://bixkagromer18" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dcv0wvvxua3fb" path="res://HUD/hud.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://csf8j0abstbf5" path="res://Level/level.tscn" id="2_h2yge"]
 
 [node name="Main" type="Node" unique_id=1477399387]
+script = ExtResource("1_0xm2m")
+levels = Array[PackedScene]([ExtResource("2_h2yge")])
 
 [node name="HUD" parent="." unique_id=200381096 instance=ExtResource("1_ig7tw")]
+
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

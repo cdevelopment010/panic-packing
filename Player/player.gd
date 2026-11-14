@@ -27,6 +27,9 @@ func _physics_process(delta: float) -> void:
 		var target = %SeeCast.get_collider()
 		if target != null and target is RigidBody3D and target.is_in_group("items"):
 			label.show()
+			
+		if target != null and target is RigidBody3D and target.is_in_group("door"):
+			target.show_label
 	
 	if Input.is_action_just_pressed("interact"): 
 		if not charging_item and holding_item: 
@@ -43,11 +46,13 @@ func _physics_process(delta: float) -> void:
 				current_object = target
 				target.set_collision_layer_value(1,false)
 				holding_item = true
-	if charging_item and force < 20.0: 
+	if charging_item: 
 		force += delta * 10
 		force = clampf(force, 0.5, 20.0)
+		$CenterContainer/Crosshair.set_charge(force, 20)
 	
 	if Input.is_action_just_released("interact") and charging_item: 
+		$CenterContainer/Crosshair.set_charge(0, 20)
 		drop_item.emit(current_object, force)
 		charging_item = false
 		force = 0.0
