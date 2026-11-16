@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b1dkg33fwsxdn"]
+
+[ext_resource type="Script" uid="uid://bqbsms3ixa56i" path="res://HUD/checklist.gd" id="1_uhrhf"]
+
+[node name="Checklist" type="Control" unique_id=449985247]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uhrhf")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=888185589]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=363724162]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=1209602845]
+layout_mode = 2
+alignment = 1

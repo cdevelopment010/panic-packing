@@ -9,13 +9,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if get_tree().paused: 
-		self.visible = true
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else: 
-		self.visible = false
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
+	#if get_tree().paused: 
+		#self.visible = true
+		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#else: 
+		#self.visible = false
+		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+
+func show_pause(): 
+	self.visible = true
+	
+func hide_pause(): 
+	self.visible = false
 
 func _on_button_pressed() -> void:
 	get_tree().paused = false

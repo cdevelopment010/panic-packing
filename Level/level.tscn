@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dwhg6f8gjllot" path="res://Level/Items/dino_item.tscn" id="7_d6qko"]
 [ext_resource type="PackedScene" uid="uid://dkpey45vcfncr" path="res://packing_manager.tscn" id="8_22cqp"]
 [ext_resource type="PackedScene" uid="uid://ccwp8hahavmr1" path="res://Level/door.tscn" id="10_py82k"]
+[ext_resource type="PackedScene" uid="uid://b1dkg33fwsxdn" path="res://HUD/checklist.tscn" id="11_1teg4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6mkr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -152,6 +153,8 @@ id = "0"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.944774)
 
 [node name="PauseMenu" parent="." unique_id=943308884 instance=ExtResource("3_wqlfs")]
+
+[node name="Checklist" parent="." unique_id=449985247 instance=ExtResource("11_1teg4")]
 
 [connection signal="game_over" from="LevelTimer" to="." method="_on_hud_game_over"]
 [connection signal="drop_item" from="Player" to="." method="_on_player_drop_item"]

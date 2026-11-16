@@ -9,6 +9,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("checklist"): 
+		$Checklist.generate_checklist($PackingManager.packing_list)
+		$Checklist.show_checklist()
 
 
 func _on_player_drop_item(object: RigidBody3D, force: float = 10.0) -> void:
