@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bqbsms3ixa56i" path="res://HUD/checklist.gd" id="1_uhrhf"]
 
 [node name="Checklist" type="Control" unique_id=449985247]
-process_mode = 2
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15
