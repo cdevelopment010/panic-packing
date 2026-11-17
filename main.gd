@@ -4,6 +4,9 @@ extends Node
 var level_index = 0
 var mouse_motion
 
+func _ready() -> void:
+	get_tree().paused = false
+
 func _input(event: InputEvent) -> void: 
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouse_motion = -event.relative * 0.001 # 0.001 can be thought of as sensistivity. Negative so the camera moves in the same way. 

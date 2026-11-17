@@ -4,6 +4,9 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Checklist.packing_manager = $PackingManager
+	$Results.current_level = self
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().paused = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +37,8 @@ func _on_door_leave_game() -> void:
 func game_over(): 
 	#get_tree().change_scene_to_file("res://main.tscn")
 	get_tree().paused = true
-	# Some sort of score pop-up
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$Results.show()
 	
 func restart():
 	get_tree().reload_current_scene()
