@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cnxkr8bnhrdp"
-path="res://.godot/imported/door.glb-b36395ac0dff45b01add6a36b474fb82.scn"
+uid="uid://un785h8tqt8i"
+path="res://.godot/imported/bed side table.glb-2547a4e23197eacd7ed908f8202f344e.scn"
 
 [deps]
 
-source_file="res://Assets/Room/door.glb"
-dest_files=["res://.godot/imported/door.glb-b36395ac0dff45b01add6a36b474fb82.scn"]
+source_file="res://Assets/Room/bedside table/bed side table.glb"
+dest_files=["res://.godot/imported/bed side table.glb-2547a4e23197eacd7ed908f8202f344e.scn"]
 
 [params]
 

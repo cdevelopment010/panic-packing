@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ju14xqvsosgy"]
+
+[ext_resource type="PackedScene" uid="uid://un785h8tqt8i" path="res://Assets/Room/bedside table/bed side table.glb" id="1_76h1g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t3ff"]
+size = Vector3(1, 0.103393555, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_db6cj"]
+size = Vector3(0.14794922, 1, 1)
+
+[node name="BedsideTable" type="StaticBody3D" unique_id=1266730790]
+collision_layer = 3
+collision_mask = 3
+
+[node name="bed side table" parent="." unique_id=1624735492 instance=ExtResource("1_76h1g")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2077419023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055236816, 0)
+shape = SubResource("BoxShape3D_6t3ff")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=2102227037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48470503, 0)
+shape = SubResource("BoxShape3D_6t3ff")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1501482311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9501309, 0)
+shape = SubResource("BoxShape3D_6t3ff")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=471320698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4260254, 0.50736576, 0)
+shape = SubResource("BoxShape3D_db6cj")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=2043046190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42481327, 0.50736576, 0)
+shape = SubResource("BoxShape3D_db6cj")

@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	handle_camera_rotation()	
+
 	
 	label.hide()
 	if %SeeCast.is_colliding():
@@ -29,7 +30,7 @@ func _physics_process(delta: float) -> void:
 			label.show()
 			
 		if target != null and target is RigidBody3D and target.is_in_group("door"):
-			target.show_label
+			target.show_label()
 	
 	if Input.is_action_just_pressed("interact"): 
 		if not charging_item and holding_item: 
@@ -40,9 +41,10 @@ func _physics_process(delta: float) -> void:
 			if target != null  and target is RigidBody3D and target.is_in_group("items"):
 				charging_item = false
 				force = 0.0
-				target.reparent(marker_3d)
-				target.freeze = true
+				target.reparent(marker_3d, true)
 				target.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
+				target.freeze = true
+				
 				current_object = target
 				target.set_collision_layer_value(1,false)
 				holding_item = true

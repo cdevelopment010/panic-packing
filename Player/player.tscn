@@ -21,9 +21,6 @@ shape = SubResource("ConvexPolygonShape3D_hvfyp")
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1423153995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
-[node name="Marker3D" type="Marker3D" parent="CameraPivot" unique_id=80867931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.92639685)
-
 [node name="SmoothCamera" type="Camera3D" parent="CameraPivot" unique_id=468865127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 top_level = true
@@ -32,9 +29,12 @@ script = ExtResource("2_4ntmi")
 [node name="SeeCast" type="RayCast3D" parent="CameraPivot" unique_id=1776508356]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1921894, 0)
-target_position = Vector3(0, 0, -1.745)
+target_position = Vector3(0, 0, -2.78)
 collision_mask = 3
 debug_shape_custom_color = Color(0.82676935, 0.14149436, 0.3138854, 1)
+
+[node name="Marker3D" type="Marker3D" parent="CameraPivot" unique_id=80867931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.92639685)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=497358055]
 

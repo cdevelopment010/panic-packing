@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhb8nbqwgnk7"]
 
 [ext_resource type="Script" uid="uid://dgpe2iwigph8x" path="res://Level/suitcase.gd" id="1_0nu3j"]
+[ext_resource type="PackedScene" uid="uid://bk6ly3lo6px3n" path="res://Assets/Room/suitcase/suitcase.glb" id="2_hj3w4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db6cj"]
 albedo_color = Color(0.497348, 0.8206302, 0.4152046, 1)
@@ -12,13 +13,24 @@ size = Vector3(1, 0.3, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hekbu"]
 data = PackedVector3Array(-0.5, 0.14999999, 0.5, 0.5, 0.14999999, 0.5, -0.5, -0.14999999, 0.5, 0.5, 0.14999999, 0.5, 0.5, -0.14999999, 0.5, -0.5, -0.14999999, 0.5, 0.5, 0.14999999, -0.5, -0.5, 0.14999999, -0.5, 0.5, -0.14999999, -0.5, -0.5, 0.14999999, -0.5, -0.5, -0.14999999, -0.5, 0.5, -0.14999999, -0.5, 0.5, 0.14999999, 0.5, 0.5, 0.14999999, -0.5, 0.5, -0.14999999, 0.5, 0.5, 0.14999999, -0.5, 0.5, -0.14999999, -0.5, 0.5, -0.14999999, 0.5, -0.5, 0.14999999, -0.5, -0.5, 0.14999999, 0.5, -0.5, -0.14999999, -0.5, -0.5, 0.14999999, 0.5, -0.5, -0.14999999, 0.5, -0.5, -0.14999999, -0.5, 0.5, 0.14999999, 0.5, -0.5, 0.14999999, 0.5, 0.5, 0.14999999, -0.5, -0.5, 0.14999999, 0.5, -0.5, 0.14999999, -0.5, 0.5, 0.14999999, -0.5, -0.5, -0.14999999, 0.5, 0.5, -0.14999999, 0.5, -0.5, -0.14999999, -0.5, 0.5, -0.14999999, 0.5, 0.5, -0.14999999, -0.5, -0.5, -0.14999999, -0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t3ff"]
+size = Vector3(1.4934082, 0.49682617, 1)
+
 [node name="Suitcase" type="Area3D" unique_id=201595260]
 script = ExtResource("1_0nu3j")
 
+[node name="suitcase" parent="." unique_id=819000257 instance=ExtResource("2_hj3w4")]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=527220107]
+visible = false
 mesh = SubResource("BoxMesh_6t3ff")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1196273167]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_hekbu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1206195112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014038086, 0.2515869, 0)
+shape = SubResource("BoxShape3D_6t3ff")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

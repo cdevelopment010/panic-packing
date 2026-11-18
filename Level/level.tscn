@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dxl4g1p8c7mk7" path="res://Level/level_timer.tscn" id="2_52x1o"]
 [ext_resource type="PackedScene" uid="uid://dhb8nbqwgnk7" path="res://Level/suitcase.tscn" id="3_uawph"]
 [ext_resource type="PackedScene" uid="uid://c7litlavn1lo5" path="res://HUD/pause_menu.tscn" id="3_wqlfs"]
+[ext_resource type="PackedScene" uid="uid://bxa0f5q4bc07e" path="res://Level/Room Items/bed.tscn" id="4_q47le"]
+[ext_resource type="PackedScene" uid="uid://ju14xqvsosgy" path="res://Level/Room Items/bedside_table.tscn" id="5_dx36h"]
 [ext_resource type="PackedScene" uid="uid://dyf5hfo8nnvwt" path="res://Level/Items/orange_critter_item.tscn" id="5_nk1il"]
 [ext_resource type="PackedScene" uid="uid://dy8w1n2o0ftut" path="res://Level/Items/LaptopItem.tscn" id="6_nk1il"]
 [ext_resource type="PackedScene" uid="uid://dwhg6f8gjllot" path="res://Level/Items/dino_item.tscn" id="7_d6qko"]
@@ -50,7 +52,7 @@ points = PackedVector3Array(-10.666668, -2.666667, -0.4166667, 10.666668, 2.6666
 script = ExtResource("1_qmtf6")
 
 [node name="LevelTimer" parent="." unique_id=964813875 instance=ExtResource("2_52x1o")]
-level_time = 10
+level_time = 90
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=961055816]
 environment = SubResource("Environment_uawph")
@@ -62,57 +64,65 @@ shadow_enabled = true
 [node name="Player" parent="." unique_id=246806148 instance=ExtResource("1_o6mkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0353816, 0)
 
-[node name="MeshInstance3D" type="CSGMesh3D" parent="." unique_id=1603527646]
+[node name="Walls" type="Node" parent="." unique_id=1136599581]
+
+[node name="MeshInstance3D" type="CSGMesh3D" parent="Walls" unique_id=1603527646]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_6t3ff")
 
-[node name="MeshInstance3D2" type="CSGMesh3D" parent="." unique_id=1013741876]
+[node name="MeshInstance3D2" type="CSGMesh3D" parent="Walls" unique_id=1013741876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_6t3ff")
 
-[node name="Node" type="Node" parent="." unique_id=1136599581]
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls" unique_id=838670176]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node" unique_id=838670176]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node/StaticBody3D" unique_id=148722935]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/StaticBody3D" unique_id=148722935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.254082, 2.0014088, 0)
 mesh = SubResource("BoxMesh_db6cj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/StaticBody3D" unique_id=216090695]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D" unique_id=216090695]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.254082, 2.0014088, 0)
 shape = SubResource("ConcavePolygonShape3D_o6mkr")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="Node" unique_id=1226343272]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Walls" unique_id=1226343272]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node/StaticBody3D2" unique_id=1253047336]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls/StaticBody3D2" unique_id=1253047336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.248941, 1.9955335, 0)
 mesh = SubResource("BoxMesh_db6cj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/StaticBody3D2" unique_id=1768584127]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D2" unique_id=1768584127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.248941, 1.9955335, 0)
 shape = SubResource("ConvexPolygonShape3D_o6mkr")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="Node" unique_id=417305903]
+[node name="StaticBody3D3" type="StaticBody3D" parent="Walls" unique_id=417305903]
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node/StaticBody3D3" unique_id=450504652]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls/StaticBody3D3" unique_id=450504652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9992383, 10.248079)
 mesh = SubResource("BoxMesh_pf3ql")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/StaticBody3D3" unique_id=1951400023]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D3" unique_id=1951400023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9992383, 10.248079)
 shape = SubResource("ConvexPolygonShape3D_qmtf6")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="Node" unique_id=945014473]
+[node name="StaticBody3D4" type="StaticBody3D" parent="Walls" unique_id=945014473]
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node/StaticBody3D4" unique_id=1395263405]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls/StaticBody3D4" unique_id=1395263405]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9992383, -10.244662)
 mesh = SubResource("BoxMesh_pf3ql")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/StaticBody3D4" unique_id=1741200250]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D4" unique_id=1741200250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9992383, -10.244662)
 shape = SubResource("ConvexPolygonShape3D_uawph")
+
+[node name="RoomDecorations" type="Node" parent="." unique_id=1760437009]
+
+[node name="Bed" parent="RoomDecorations" unique_id=321556218 instance=ExtResource("4_q47le")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.417133, 0, 8.709404)
+
+[node name="BedsideTable" parent="RoomDecorations" unique_id=65330800 instance=ExtResource("5_dx36h")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.446625, 0, 7.1427956)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1278239254]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.3097827, 3.9131975, 0)
@@ -129,7 +139,7 @@ spot_range = 10.0
 spot_attenuation = 0.2
 
 [node name="Suitcase" parent="." unique_id=201595260 instance=ExtResource("3_uawph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.2631473, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7, 0.2631473, 0)
 
 [node name="Items" type="Node3D" parent="." unique_id=1499673448]
 
@@ -139,7 +149,7 @@ type = "critter"
 id = "0"
 
 [node name="LaptopItem" parent="Items" unique_id=773955492 instance=ExtResource("6_nk1il")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.223378)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.202605, 1.3050681, 7.107668)
 type = "laptop"
 id = "0"
 

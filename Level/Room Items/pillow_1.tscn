@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c5xy827ahwlg8"]
+
+[ext_resource type="PackedScene" uid="uid://cyn5u4cpv2bu6" path="res://Level/item.tscn" id="1_o1g2j"]
+[ext_resource type="PackedScene" uid="uid://bcr6fqsgbcvw4" path="res://Assets/Room/bed/pillow 3.glb" id="2_o1g2j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i1l3"]
+size = Vector3(1.0556641, 0.19433594, 0.651947)
+
+[node name="Pillow 1" unique_id=960152825 groups=["items"] instance=ExtResource("1_o1g2j")]
+collision_mask = 3
+type = "pillo"
+id = "1"
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0043945313, -0.009521484, -0.005630493)
+shape = SubResource("BoxShape3D_8i1l3")
+
+[node name="pillow 3" parent="Visuals" parent_id_path=PackedInt32Array(963336991) index="0" unique_id=698903080 instance=ExtResource("2_o1g2j")]
