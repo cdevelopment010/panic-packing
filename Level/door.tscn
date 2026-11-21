@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://ccwp8hahavmr1"]
 
 [ext_resource type="Script" uid="uid://br1w87r3gn2ul" path="res://Level/door.gd" id="1_55yph"]
-[ext_resource type="PackedScene" uid="uid://boq7cxyb3j3ed" path="res://Assets/Room/door2.glb" id="1_i5ruw"]
+[ext_resource type="PackedScene" uid="uid://boq7cxyb3j3ed" path="res://Assets/Room/door/door2.glb" id="1_i5ruw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t3ff"]
 size = Vector3(1.4533691, 2.561798, 1.4619751)
 
 [node name="Door" type="Area3D" unique_id=768014023 groups=["door"]]
+collision_mask = 5
 script = ExtResource("1_55yph")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1834943592]
