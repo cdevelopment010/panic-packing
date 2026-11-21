@@ -2,7 +2,8 @@ extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var label: Label = $CanvasLayer/BoxContainer/Label
-@onready var marker_3d: Marker3D = $CameraPivot/Marker3D
+#@onready var marker_3d: Marker3D = $CameraPivot/Marker3D
+@onready var grab_anchor: Marker3D = $CameraPivot/SpringArm3D/GrabAnchor
 
 signal drop_item(object, force)
 
@@ -10,6 +11,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var mouse_motion := Vector2.ZERO
+var mouse_sense:float = 0.001
 var holding_item: bool = false
 var charging_item: bool = false
 var force: float = 0.0
@@ -41,10 +43,6 @@ func _physics_process(delta: float) -> void:
 			if target != null  and target is RigidBody3D and target.is_in_group("items"):
 				charging_item = false
 				force = 0.0
-				target.reparent(marker_3d, true)
-				target.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
-				target.freeze = true
-				
 				current_object = target
 				target.set_collision_layer_value(1,false)
 				holding_item = true
@@ -83,11 +81,23 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	if current_object: 
+		var target_pos:Vector3 = grab_anchor.global_position
+		var current_pos:Vector3 = current_object.global_position
+		var dir = target_pos - current_pos
+		var required_velocity = dir / delta
+		var velocity_correction = required_velocity - current_object.linear_velocity
+		current_object.linear_velocity = required_velocity	
+		#dampen so it doesn't spin
+		current_object.angular_velocity *= 0.1
+		
+		
 
 	
 func _input(event: InputEvent) -> void: 
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		mouse_motion = -event.relative * 0.001 # 0.001 can be thought of as sensistivity. Negative so the camera moves in the same way. 
+		mouse_motion = -event.relative * mouse_sense  
 	if event.is_action_pressed("ui_cancel"): 
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if (event is InputEventMouseButton 
