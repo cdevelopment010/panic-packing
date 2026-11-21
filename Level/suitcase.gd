@@ -14,6 +14,7 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("items"):
+		
 		item_packed.emit(body)
 		body.call_deferred("queue_free")
 		# Need to store what items have been packed. 

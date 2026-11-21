@@ -7,8 +7,7 @@
 size = Vector3(0.78460693, 0.1239624, 0.61213684)
 
 [node name="LaptopItem" unique_id=960152825 groups=["items"] instance=ExtResource("1_dpgmi")]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
 mass = 0.5
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]

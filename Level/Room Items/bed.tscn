@@ -11,7 +11,6 @@ size = Vector3(2.0080566, 1.037323, 2.6113281)
 [node name="bed" parent="." unique_id=542731310 instance=ExtResource("1_upncq")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2118105674]
-collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=674201447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0061838627, 0.51246643, -0.039103627)
@@ -19,6 +18,10 @@ shape = SubResource("BoxShape3D_6t3ff")
 
 [node name="Pillow 1" parent="." unique_id=960152825 instance=ExtResource("2_w2may")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4684431, 1.1737708, -1.0082726)
+collision_layer = 3
+collision_mask = 1
 
 [node name="Pillow 2" parent="." unique_id=527528471 instance=ExtResource("2_w2may")]
 transform = Transform3D(0.91068363, 0, 0.41310444, 0, 1, 0, -0.41310444, 0, 0.91068363, -0.54080075, 1.1737708, -1.0082726)
+collision_layer = 3
+collision_mask = 1

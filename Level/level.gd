@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 			
 
 func _on_player_drop_item(object: RigidBody3D, force: float = 10.0) -> void:
-	object.set_collision_layer_value(1, true)
+	object.set_collision_layer_value(2, true)
 	var direction = -$Player.camera_pivot.global_transform.basis.z
 	object.apply_central_impulse((direction * force) + Vector3(0.0,1.0,0.0))
 

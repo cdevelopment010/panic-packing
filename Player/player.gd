@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var label: Label = $CanvasLayer/BoxContainer/Label
 #@onready var marker_3d: Marker3D = $CameraPivot/Marker3D
-@onready var grab_anchor: Marker3D = $CameraPivot/SpringArm3D/GrabAnchor
+@onready var grab_anchor: Marker3D = $CameraPivot/SmoothCamera/SpringArm3D/GrabAnchor
 
 signal drop_item(object, force)
 
@@ -11,11 +11,13 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var mouse_motion := Vector2.ZERO
-var mouse_sense:float = 0.001
+var mouse_sense:float = 0.0005
 var holding_item: bool = false
 var charging_item: bool = false
 var force: float = 0.0
 var current_object
+
+var held_rotation_offset: Quaternion
 
 func _ready() -> void: 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -44,8 +46,12 @@ func _physics_process(delta: float) -> void:
 				charging_item = false
 				force = 0.0
 				current_object = target
-				target.set_collision_layer_value(1,false)
+				#target.set_collision_layer_value(2,false)
 				holding_item = true
+				held_rotation_offset = (
+					grab_anchor.global_basis.get_rotation_quaternion().inverse()
+					* current_object.global_basis.get_rotation_quaternion()
+				)
 	if charging_item: 
 		force += delta * 10
 		force = clampf(force, 0.5, 20.0)
@@ -86,8 +92,16 @@ func _physics_process(delta: float) -> void:
 		var target_pos:Vector3 = grab_anchor.global_position
 		var current_pos:Vector3 = current_object.global_position
 		var dir = target_pos - current_pos
-		var required_velocity = dir / delta
-		var velocity_correction = required_velocity - current_object.linear_velocity
+		#var required_velocity = dir / delta
+		var required_velocity = dir *15.0
+		required_velocity = required_velocity.limit_length(10.0)
+		
+		var target_rotation = (
+			grab_anchor.global_basis.get_rotation_quaternion()
+			* held_rotation_offset
+		)
+		current_object.global_basis = Basis(target_rotation)
+		#var velocity_correction = required_velocity - current_object.linear_velocity
 		current_object.linear_velocity = required_velocity	
 		#dampen so it doesn't spin
 		current_object.angular_velocity *= 0.1
@@ -97,7 +111,7 @@ func _physics_process(delta: float) -> void:
 	
 func _input(event: InputEvent) -> void: 
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		mouse_motion = -event.relative * mouse_sense  
+		mouse_motion += -event.relative * mouse_sense  
 	if event.is_action_pressed("ui_cancel"): 
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if (event is InputEventMouseButton 
