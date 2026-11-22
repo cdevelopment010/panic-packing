@@ -46,7 +46,9 @@ func _physics_process(delta: float) -> void:
 				charging_item = false
 				force = 0.0
 				current_object = target
+				print(current_object)
 				#target.set_collision_layer_value(2,false)
+				current_object.add_collision_exception_with(self)
 				holding_item = true
 				held_rotation_offset = (
 					grab_anchor.global_basis.get_rotation_quaternion().inverse()
@@ -58,6 +60,7 @@ func _physics_process(delta: float) -> void:
 		$CenterContainer/Crosshair.set_charge(force, 20)
 	
 	if Input.is_action_just_released("interact") and charging_item: 
+		#current_object.remove_collision_exception_with(self)
 		$CenterContainer/Crosshair.set_charge(0, 20)
 		drop_item.emit(current_object, force)
 		charging_item = false

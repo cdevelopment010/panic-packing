@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ndrb50bo77ai"]
+
+[ext_resource type="PackedScene" uid="uid://cyn5u4cpv2bu6" path="res://Level/item.tscn" id="1_12i7k"]
+[ext_resource type="PackedScene" uid="uid://b4k8wcgffj3ch" path="res://Assets/Items/Book/book.glb" id="2_sqqvt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sc6gp"]
+size = Vector3(0.15270996, 0.082214355, 0.15014648)
+
+[node name="Book" unique_id=960152825 groups=["items"] instance=ExtResource("1_12i7k")]
+type = "book"
+id = "0"
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014038086, 3.0517578e-05, -0.00061035156)
+shape = SubResource("BoxShape3D_sc6gp")
+
+[node name="book" parent="Visuals" parent_id_path=PackedInt32Array(963336991) index="0" unique_id=1613166079 instance=ExtResource("2_sqqvt")]

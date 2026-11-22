@@ -1,7 +1,7 @@
-extends Control
+extends CanvasLayer
 
-@onready var checklist: Control = $"."
-@onready var v_box_container: VBoxContainer = $MarginContainer/CenterContainer/VBoxContainer
+@onready var checklist: Control = $"Control"
+@onready var v_box_container: VBoxContainer = $Control/Panel/MarginContainer/VBoxContainer
 
 var packing_manager : Node
 
@@ -41,14 +41,41 @@ func toggle_checklist():
 func generate_checklist():
 	for child in v_box_container.get_children(): 
 		child.queue_free()
+	
+	# title
+	
+	var hbox_title = HBoxContainer.new()
+	var item_title = Label.new()
+	item_title.text = "Checklist"
+	item_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	item_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	item_title["theme_override_colors/font_color"] = Color.BLACK
+	item_title["theme_override_font_sizes/font_size"] = "24px"
+	hbox_title.add_child(item_title)
+	v_box_container.add_child(hbox_title)
+	
+	# Header row
+	var hbox_header = HBoxContainer.new()
+	var item_label_header = generate_label()
+	var item_amount_header = generate_label()
+	var item_required_header = generate_label()
+	
+	item_label_header.text = "Item"
+	item_amount_header.text = "Amount Packed"
+	item_required_header.text = "Amount Required"
+	hbox_header.add_child(item_label_header)
+	hbox_header.add_child(item_amount_header)
+	hbox_header.add_child(item_required_header)
+	v_box_container.add_child(hbox_header)
+	
 	for item in packing_manager.packing_list:
 		
 		var hbox = HBoxContainer.new()
-		var item_label = Label.new()
+		var item_label = generate_label()
 		item_label.text = str(item)
-		var item_amount = Label.new()
+		var item_amount = generate_label()
 		item_amount.text = str(packing_manager.packing_list[str(item)]["instances"].size())
-		var item_required = Label.new()
+		var item_required = generate_label()
 		item_required.text = str(packing_manager.packing_list[str(item)]["required"])
 		hbox.add_child(item_label)
 		hbox.add_child(item_amount)
@@ -57,3 +84,12 @@ func generate_checklist():
 		
 func update_checklist(): 
 	pass
+
+
+func generate_label() -> Label:
+	var label = Label.new()
+	label.size_flags_horizontal = Control.SIZE_EXPAND
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	label["theme_override_colors/font_color"] = Color.BLACK
+	return label
+	

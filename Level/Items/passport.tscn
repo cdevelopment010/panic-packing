@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://0thd1j0dhfq2"]
+
+[ext_resource type="PackedScene" uid="uid://cyn5u4cpv2bu6" path="res://Level/item.tscn" id="1_ue0lr"]
+[ext_resource type="PackedScene" uid="uid://budat3wxe038e" path="res://Assets/Items/Passport/passport.glb" id="2_6wkvk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2wvtn"]
+size = Vector3(0.047943115, 0.011779785, 0.05102539)
+
+[node name="Passport" unique_id=960152825 groups=["items"] instance=ExtResource("1_ue0lr")]
+type = "passport"
+id = "0"
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.5258789e-05, -0.00033569336, -0.0013427734)
+shape = SubResource("BoxShape3D_2wvtn")
+
+[node name="Visuals" parent="." index="1" unique_id=963336991]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="passport" parent="Visuals" index="0" unique_id=605796462 instance=ExtResource("2_6wkvk")]

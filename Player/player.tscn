@@ -36,13 +36,14 @@ script = ExtResource("2_4ntmi")
 [node name="SeeCast" type="RayCast3D" parent="CameraPivot/SmoothCamera" unique_id=1776508356]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.057533264)
-target_position = Vector3(0, 0, -2.5)
+target_position = Vector3(0, 0, -3)
 collision_mask = 3
 debug_shape_custom_color = Color(0.82676935, 0.14149436, 0.3138854, 1)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot/SmoothCamera" unique_id=966623088]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.057533264)
 shape = SubResource("SphereShape3D_btcbx")
+spring_length = 1.5
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CameraPivot/SmoothCamera/SpringArm3D" unique_id=1655195731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.02798462)

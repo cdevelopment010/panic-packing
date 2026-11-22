@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://j5mai5yovp7b"]
+
+[ext_resource type="PackedScene" uid="uid://dakaqu4vm64jk" path="res://Assets/Room/bin/bin.glb" id="1_lgon2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t3ff"]
+size = Vector3(0.43304443, 0.30799866, 0.43249512)
+
+[node name="Bin" type="RigidBody3D" unique_id=1743394230]
+collision_layer = 2
+collision_mask = 7
+
+[node name="bin" parent="." unique_id=1086475744 instance=ExtResource("1_lgon2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=635208075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00015258789, 0.15073395, -6.1035156e-05)
+shape = SubResource("BoxShape3D_6t3ff")

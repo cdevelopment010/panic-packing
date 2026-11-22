@@ -5,16 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://dxl4g1p8c7mk7" path="res://Level/level_timer.tscn" id="2_52x1o"]
 [ext_resource type="PackedScene" uid="uid://dhb8nbqwgnk7" path="res://Level/suitcase.tscn" id="3_uawph"]
 [ext_resource type="PackedScene" uid="uid://c7litlavn1lo5" path="res://HUD/pause_menu.tscn" id="3_wqlfs"]
+[ext_resource type="PackedScene" uid="uid://j5mai5yovp7b" path="res://Level/Room Items/bin.tscn" id="4_k8npl"]
 [ext_resource type="PackedScene" uid="uid://bxa0f5q4bc07e" path="res://Level/Room Items/bed.tscn" id="4_q47le"]
 [ext_resource type="PackedScene" uid="uid://ju14xqvsosgy" path="res://Level/Room Items/bedside_table.tscn" id="5_dx36h"]
 [ext_resource type="PackedScene" uid="uid://dyf5hfo8nnvwt" path="res://Level/Items/orange_critter_item.tscn" id="5_nk1il"]
 [ext_resource type="PackedScene" uid="uid://dc5dwvsob4pia" path="res://Level/Room Items/corner_lamp.tscn" id="6_1p6h5"]
 [ext_resource type="PackedScene" uid="uid://dy8w1n2o0ftut" path="res://Level/Items/LaptopItem.tscn" id="6_nk1il"]
 [ext_resource type="PackedScene" uid="uid://dwhg6f8gjllot" path="res://Level/Items/dino_item.tscn" id="7_d6qko"]
+[ext_resource type="PackedScene" uid="uid://cl6vfle3it0g8" path="res://Level/Room Items/desk.tscn" id="7_luomk"]
 [ext_resource type="PackedScene" uid="uid://dkpey45vcfncr" path="res://packing_manager.tscn" id="8_22cqp"]
+[ext_resource type="PackedScene" uid="uid://ctypmxmkk2qnm" path="res://Level/Room Items/desk_lamp.tscn" id="8_k8npl"]
 [ext_resource type="PackedScene" uid="uid://ccwp8hahavmr1" path="res://Level/door.tscn" id="10_py82k"]
 [ext_resource type="PackedScene" uid="uid://b1dkg33fwsxdn" path="res://HUD/checklist.tscn" id="11_1teg4"]
 [ext_resource type="PackedScene" uid="uid://boeeswuwowp0s" path="res://HUD/results.tscn" id="12_i5g78"]
+[ext_resource type="PackedScene" uid="uid://ndrb50bo77ai" path="res://Level/Items/book.tscn" id="14_am3y4"]
+[ext_resource type="PackedScene" uid="uid://0thd1j0dhfq2" path="res://Level/Items/passport.tscn" id="15_l5n2q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6mkr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -119,6 +124,9 @@ shape = SubResource("ConcavePolygonShape3D_luomk")
 
 [node name="RoomDecorations" type="Node" parent="." unique_id=1760437009]
 
+[node name="Bin" parent="RoomDecorations" unique_id=1743394230 instance=ExtResource("4_k8npl")]
+transform = Transform3D(-0.77162457, 0, 0.63607824, 0, 1, 0, -0.63607824, 0, -0.77162457, 9.644871, 0.0604949, 1.7171876)
+
 [node name="Bed" parent="RoomDecorations" unique_id=321556218 instance=ExtResource("4_q47le")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.374646, 0, 3.0958962)
 
@@ -127,6 +135,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.34
 
 [node name="CornerLamp" parent="RoomDecorations" unique_id=1767852874 instance=ExtResource("6_1p6h5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.717376, 0, -4.7254295)
+
+[node name="Desk" parent="RoomDecorations" unique_id=1520547341 instance=ExtResource("7_luomk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.429621, 0, 2.6878746)
+
+[node name="DeskLamp" parent="RoomDecorations" unique_id=1783575803 instance=ExtResource("8_k8npl")]
+transform = Transform3D(-0.77162457, 0, 0.63607824, 0, 1, 0, -0.63607824, 0, -0.77162457, 9.644871, 1.3787453, 3.7171876)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1278239254]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.3097827, 3.9131975, 0)
@@ -149,7 +163,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5950418, 0.2631473, -4.0917
 
 [node name="OrangeCritterItem" parent="Items" unique_id=960152825 instance=ExtResource("5_nk1il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7968936, 0, -4.6834583)
-type = "critter"
 id = "0"
 
 [node name="LaptopItem" parent="Items" unique_id=773955492 instance=ExtResource("6_nk1il")]
@@ -159,8 +172,13 @@ id = "0"
 
 [node name="DinoItem" parent="Items" unique_id=1663463140 instance=ExtResource("7_d6qko")]
 transform = Transform3D(-0.6292625, 0, 0.77719295, 0, 1, 0, -0.77719295, 0, -0.6292625, 5.36754, 1.0937339, 3.3327167)
-type = "dino"
 id = "0"
+
+[node name="Book" parent="Items" unique_id=163375532 instance=ExtResource("14_am3y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.60309, 0.33916014, 1.727104)
+
+[node name="Passport" parent="Items" unique_id=1913354963 instance=ExtResource("15_l5n2q")]
+transform = Transform3D(1, 0, 0, 0, 0.9996703, -0.025675248, 0, 0.025675248, 0.9996703, 3.519119, 1.1632693, 2.3158479)
 
 [node name="PackingManager" parent="." unique_id=797135572 instance=ExtResource("8_22cqp")]
 

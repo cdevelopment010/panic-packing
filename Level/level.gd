@@ -1,8 +1,38 @@
 extends Node3D
 
 
+var items_definitions: Dictionary = {
+	"laptop": {
+		"always_required": false,
+		"min_required": 1, 
+		"max_required": 1
+	}, 
+	"passport": {
+		"always_required": true,
+		"min_required": 1, 
+		"max_required": 1
+	}, 
+	"book": {
+		"always_required": false,
+		"min_required": 0, 
+		"max_required": 0
+	}, 
+	"critter": {
+		"always_required": false,
+		"min_required": 0, 
+		"max_required": 0
+	}, 
+	"dino": {
+		"always_required": false,
+		"min_required": 0, 
+		"max_required": 0
+	}, 
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$PackingManager.items_definitions = items_definitions
+	$PackingManager.generate_packing_list()
 	$Checklist.packing_manager = $PackingManager
 	$Results.current_level = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

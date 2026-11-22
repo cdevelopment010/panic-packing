@@ -16,7 +16,8 @@ var packing_list: Dictionary = {}
 
 func _ready() -> void:
 	# 1st version - some items are to be packed
-	generate_packing_list()
+	#generate_packing_list()
+	pass
 
 func generate_packing_list(): 
 	for item_id in items_definitions:

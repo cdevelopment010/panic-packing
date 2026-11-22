@@ -7,8 +7,8 @@
 size = Vector3(1.0556641, 0.19433594, 0.651947)
 
 [node name="Pillow 1" unique_id=960152825 groups=["items"] instance=ExtResource("1_o1g2j")]
-collision_mask = 3
-type = "pillo"
+collision_mask = 1
+type = "pillow"
 id = "1"
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=2099940894]
