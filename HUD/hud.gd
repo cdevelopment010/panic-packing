@@ -1,6 +1,7 @@
-extends Control
+extends CanvasLayer
 
 signal start_game()
+signal show_controls()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,3 +15,10 @@ func _process(_delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	start_game.emit()
+
+
+func _show_controls(): 
+	show_controls.emit()
+
+func quit_game(): 
+	get_tree().quit()

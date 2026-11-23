@@ -2,40 +2,88 @@
 
 [ext_resource type="Script" uid="uid://chne6n1147q1g" path="res://HUD/hud.gd" id="1_h61sl"]
 
-[node name="HUD" type="Control" unique_id=200381096]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h61sl"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.80784315)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mi5n8"]
+font_size = 64
+
+[node name="HUD" type="CanvasLayer" unique_id=1533148900]
+script = ExtResource("1_h61sl")
+
+[node name="CanvasLayer" type="Control" parent="." unique_id=2057060408]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h61sl")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1157485778]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=72717503]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 515.0
 grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_right = 40
+theme_override_styles/panel = SubResource("StyleBoxFlat_h61sl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=847349109]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=847349109]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 475.0
+offset_bottom = 648.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer" unique_id=595430717]
 layout_mode = 2
+theme_override_constants/margin_top = 25
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1733457689]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer" unique_id=1733457689]
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
-text = "Panic Packing!"
+text = "Panic 
+Packing!"
+label_settings = SubResource("LabelSettings_mi5n8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=817853951]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Panel/VBoxContainer" unique_id=386288950]
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1776152076]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2" unique_id=428429901]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=817853951]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
 text = "Start"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="ControlsButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=357340985]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Controls"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1678804037]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer/StartButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer/ControlsButton" to="." method="_show_controls"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer/QuitButton" to="." method="quit_game"]

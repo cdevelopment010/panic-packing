@@ -3,11 +3,21 @@
 [ext_resource type="Script" uid="uid://bixkagromer18" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dcv0wvvxua3fb" path="res://HUD/hud.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://csf8j0abstbf5" path="res://Level/level.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://5le0n8bkx2p3" path="res://Level/menu_background_room.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cq3wg0aogg0mv" path="res://HUD/controls.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node" unique_id=1477399387]
 script = ExtResource("1_0xm2m")
 levels = Array[PackedScene]([ExtResource("2_h2yge")])
 
-[node name="HUD" parent="." unique_id=200381096 instance=ExtResource("1_ig7tw")]
+[node name="Level" parent="." unique_id=1200555673 instance=ExtResource("3_1bvp3")]
 
+[node name="Controls" parent="." unique_id=1777217136 instance=ExtResource("5_lquwl")]
+visible = false
+
+[node name="HUD" parent="." unique_id=200381096 instance=ExtResource("1_ig7tw")]
+process_mode = 3
+
+[connection signal="hide_controls" from="Controls" to="." method="_on_controls_hide_controls"]
+[connection signal="show_controls" from="HUD" to="." method="_on_hud_show_controls"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
