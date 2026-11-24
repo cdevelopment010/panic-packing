@@ -7,6 +7,8 @@ extends CharacterBody3D
 
 signal drop_item(object, force)
 
+var checklist_open
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -24,6 +26,8 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if checklist_open: 
+		return 
 	handle_camera_rotation()	
 
 	
@@ -60,13 +64,14 @@ func _physics_process(delta: float) -> void:
 		$CenterContainer/Crosshair.set_charge(force, 20)
 	
 	if Input.is_action_just_released("interact") and charging_item: 
-		#current_object.remove_collision_exception_with(self)
-		$CenterContainer/Crosshair.set_charge(0, 20)
-		drop_item.emit(current_object, force)
+		if current_object: #Issue if you carry the object to the suitcase area. 
+			$CenterContainer/Crosshair.set_charge(0, 20)
+			current_object.continuous_cd = true
+			drop_item.emit(current_object, force)
+			current_object = null	
 		charging_item = false
 		force = 0.0
 		holding_item = false
-		current_object = null	
 	
 	
 		

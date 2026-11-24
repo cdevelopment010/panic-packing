@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://d34wyuud8s6gb"]
+
+[ext_resource type="Script" uid="uid://bvc5c6s8jn7et" path="res://HUD/instructions.gd" id="1_eevsd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df417"]
+bg_color = Color(0.8452639, 0.845332, 0.82215947, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+shadow_size = 6
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbhlr"]
+font_size = 36
+font_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qt6r1"]
+font_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
+
+[node name="Instructions" type="CanvasLayer" unique_id=210517184]
+process_mode = 3
+script = ExtResource("1_eevsd")
+
+[node name="Control" type="Control" parent="." unique_id=1271938285]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control" unique_id=2116306242]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.5
+offset_top = -175.0
+offset_right = 287.5
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_df417")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=547945650]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -149.5
+offset_right = 283.0
+offset_bottom = 158.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer" unique_id=784421432]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1826148441]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Hurry! 
+Your taxi arrives shortly!"
+label_settings = SubResource("LabelSettings_jbhlr")
+horizontal_alignment = 1
+
+[node name="Instructions" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=422027651]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Find all the items required on the checklist (Tab) and leave 
+before the taxi arrives, or face missing your flight!"
+label_settings = SubResource("LabelSettings_qt6r1")
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=808526285]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Got it"
+
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

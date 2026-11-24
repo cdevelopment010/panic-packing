@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://boeeswuwowp0s" path="res://HUD/results.tscn" id="12_i5g78"]
 [ext_resource type="PackedScene" uid="uid://ndrb50bo77ai" path="res://Level/Items/book.tscn" id="14_am3y4"]
 [ext_resource type="PackedScene" uid="uid://0thd1j0dhfq2" path="res://Level/Items/passport.tscn" id="15_l5n2q"]
+[ext_resource type="PackedScene" uid="uid://d34wyuud8s6gb" path="res://HUD/instructions.tscn" id="21_cv6tn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6mkr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -197,8 +198,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.786087, 0, -5.093294)
 
 [node name="Results" parent="." unique_id=962170835 instance=ExtResource("12_i5g78")]
 
+[node name="Instructions" parent="." unique_id=210517184 instance=ExtResource("21_cv6tn")]
+
 [connection signal="game_over" from="LevelTimer" to="." method="_on_hud_game_over"]
 [connection signal="drop_item" from="Player" to="." method="_on_player_drop_item"]
 [connection signal="item_packed" from="Suitcase" to="." method="_on_suitcase_item_packed"]
 [connection signal="leave_game" from="Door" to="." method="_on_door_leave_game"]
 [connection signal="restart" from="PauseMenu" to="." method="restart"]
+[connection signal="checklist_toggle" from="Checklist" to="." method="_on_checklist_checklist_toggle"]
+[connection signal="accept_instructions" from="Instructions" to="." method="start_level"]

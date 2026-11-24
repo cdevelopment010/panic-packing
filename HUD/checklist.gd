@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal checklist_toggle(checklist_open)
+
 @onready var checklist: Control = $"Control"
 @onready var v_box_container: VBoxContainer = $Control/Panel/MarginContainer/VBoxContainer
 
@@ -24,19 +26,19 @@ func show_checklist():
 	generate_checklist()
 	checklist.show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().paused = true
+	#get_tree().paused = true
 	
 func hide_checklist(): 
 	checklist.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_tree().paused = false
+	#get_tree().paused = false
 	
 func toggle_checklist(): 
-	print(checklist.visible)
 	if checklist.visible: 
 		hide_checklist()
 	else: 
 		show_checklist()
+	checklist_toggle.emit(checklist.visible)
 	
 func generate_checklist():
 	for child in v_box_container.get_children(): 

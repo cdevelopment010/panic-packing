@@ -35,13 +35,14 @@ func _ready() -> void:
 	$PackingManager.generate_packing_list()
 	$Checklist.packing_manager = $PackingManager
 	$Results.current_level = self
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().paused = true
+
+
+func start_level(): 
+	$Instructions.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 			
 
 func _on_player_drop_item(object: RigidBody3D, force: float = 10.0) -> void:
@@ -70,3 +71,7 @@ func game_over():
 	
 func restart():
 	get_tree().reload_current_scene()
+
+
+func _on_checklist_checklist_toggle(checklist_open: Variant) -> void:
+	$Player.checklist_open = checklist_open
