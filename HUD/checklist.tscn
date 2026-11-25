@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1dkg33fwsxdn"]
 
 [ext_resource type="Script" uid="uid://bqbsms3ixa56i" path="res://HUD/checklist.gd" id="1_uhrhf"]
+[ext_resource type="AudioStream" uid="uid://bkastahi1aj4a" path="res://Assets/SFX/Chequered Ink/UI/item_equip.wav" id="2_wqjug"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhrhf"]
 bg_color = Color(0.8452639, 0.845332, 0.82215947, 1)
@@ -84,3 +85,7 @@ text = "Item amount"
 [node name="Label3" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=488565810]
 layout_mode = 2
 text = "Item Required"
+
+[node name="OpenCloseSound" type="AudioStreamPlayer" parent="." unique_id=414552658]
+stream = ExtResource("2_wqjug")
+volume_db = -6.0

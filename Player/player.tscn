@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bb2q5l4nk13g4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://i0scpy63481q" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://e22qw52j7f65" path="res://Player/crosshair.gd" id="3_btcbx"]
+[ext_resource type="AudioStream" uid="uid://pi2m28tte7bw" path="res://Assets/SFX/Chequered Ink/UI/pop_1.wav" id="4_gwnis"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6t3ff"]
 
@@ -83,3 +84,11 @@ grow_vertical = 2
 [node name="Crosshair" type="Control" parent="CenterContainer" unique_id=1758979862]
 layout_mode = 2
 script = ExtResource("3_btcbx")
+
+[node name="PickUpSound" type="AudioStreamPlayer" parent="." unique_id=1534604431]
+stream = ExtResource("4_gwnis")
+volume_db = -6.0
+
+[node name="DropSound" type="AudioStreamPlayer" parent="." unique_id=249156297]
+stream = ExtResource("4_gwnis")
+volume_db = -6.0

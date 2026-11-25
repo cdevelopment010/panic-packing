@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dcv0wvvxua3fb"]
 
 [ext_resource type="Script" uid="uid://chne6n1147q1g" path="res://HUD/hud.gd" id="1_h61sl"]
+[ext_resource type="AudioStream" uid="uid://boiabhen4b1of" path="res://Assets/SFX/JDSherbert/JDSherbert - Ultimate UI SFX Pack - Select - 2(trimmed).wav" id="2_mi5n8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h61sl"]
 bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.80784315)
@@ -83,6 +84,9 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
+
+[node name="SelectPlayer" type="AudioStreamPlayer" parent="." unique_id=1805129783]
+stream = ExtResource("2_mi5n8")
 
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer/StartButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MarginContainer2/VBoxContainer/ControlsButton" to="." method="_show_controls"]

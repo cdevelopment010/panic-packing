@@ -15,17 +15,17 @@ var items_definitions: Dictionary = {
 	"book": {
 		"always_required": false,
 		"min_required": 0, 
-		"max_required": 0
+		"max_required": 1
 	}, 
 	"critter": {
 		"always_required": false,
 		"min_required": 0, 
-		"max_required": 0
+		"max_required": 1
 	}, 
 	"dino": {
 		"always_required": false,
 		"min_required": 0, 
-		"max_required": 0
+		"max_required": 1
 	}, 
 }
 

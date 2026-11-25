@@ -5,6 +5,13 @@ extends CharacterBody3D
 #@onready var marker_3d: Marker3D = $CameraPivot/Marker3D
 @onready var grab_anchor: Marker3D = $CameraPivot/SmoothCamera/SpringArm3D/GrabAnchor
 
+#sfx
+@onready var pick_up_sound: AudioStreamPlayer = $PickUpSound
+@onready var drop_sound: AudioStreamPlayer = $DropSound
+
+
+
+
 signal drop_item(object, force)
 
 var checklist_open
@@ -47,6 +54,7 @@ func _physics_process(delta: float) -> void:
 			
 			var target = %SeeCast.get_collider()
 			if target != null  and target is RigidBody3D and target.is_in_group("items"):
+				pick_up_sound.play()
 				charging_item = false
 				force = 0.0
 				current_object = target
@@ -64,7 +72,8 @@ func _physics_process(delta: float) -> void:
 		$CenterContainer/Crosshair.set_charge(force, 20)
 	
 	if Input.is_action_just_released("interact") and charging_item: 
-		if current_object: #Issue if you carry the object to the suitcase area. 
+		if current_object: #Issue if you carry the object to the suitcase area.
+			drop_sound.play() 
 			$CenterContainer/Crosshair.set_charge(0, 20)
 			current_object.continuous_cd = true
 			drop_item.emit(current_object, force)

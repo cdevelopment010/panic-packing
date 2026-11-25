@@ -4,6 +4,7 @@ signal checklist_toggle(checklist_open)
 
 @onready var checklist: Control = $"Control"
 @onready var v_box_container: VBoxContainer = $Control/Panel/MarginContainer/VBoxContainer
+@onready var open_close_sound: AudioStreamPlayer = $OpenCloseSound
 
 var packing_manager : Node
 
@@ -34,6 +35,7 @@ func hide_checklist():
 	#get_tree().paused = false
 	
 func toggle_checklist(): 
+	open_close_sound.play()
 	if checklist.visible: 
 		hide_checklist()
 	else: 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d34wyuud8s6gb"]
 
 [ext_resource type="Script" uid="uid://bvc5c6s8jn7et" path="res://HUD/instructions.gd" id="1_eevsd"]
+[ext_resource type="AudioStream" uid="uid://boiabhen4b1of" path="res://Assets/SFX/JDSherbert/JDSherbert - Ultimate UI SFX Pack - Select - 2(trimmed).wav" id="2_7fb2s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df417"]
 bg_color = Color(0.8452639, 0.845332, 0.82215947, 1)
@@ -87,5 +88,8 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 10
 text = "Got it"
+
+[node name="SelectPlayer" type="AudioStreamPlayer" parent="." unique_id=1521689435]
+stream = ExtResource("2_7fb2s")
 
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

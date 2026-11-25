@@ -8,20 +8,30 @@
 - ~~Timer~~
 - ~~Suitcase area~~
 - Game over
-  - time out
-  - all items packs
+  - ~~time out~~
+  - Message on game over
+    - You packed and made it on time
+    - You missed items, but left on time
+    - You missed the taxi
 
+## Gameplay
+- Add taxi horn to timer
+- Add door sound to leave
+- Add controls to control scene
+  - Mouse sensitivity (optional)
 
 
 ## Room
 - ~~Placeholder walls~~
-- Placeholder bed & objects
 
 
 
 ## Blender
 - Character model (maybe not needed as first person)
-- Suitcase
-- Walls & room
+- ~~Suitcase~~
+- ~~Walls & room~~
 - Items
   - ~~Laptop~~ 
+  - Headphones
+  - Socks
+  - Shoes

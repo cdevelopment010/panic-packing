@@ -20,4 +20,6 @@ offset_right = 42.0
 offset_bottom = 23.0
 text = "00:00"
 
+[node name="TaxiSound" type="AudioStreamPlayer" parent="." unique_id=1263673298]
+
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
