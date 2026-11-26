@@ -67,6 +67,8 @@ func game_over():
 	#get_tree().change_scene_to_file("res://main.tscn")
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$Results.packing_list = $PackingManager.packing_list
+	$Results.level_results($LevelTimer.level_time)
 	$Results.show()
 	
 func restart():
