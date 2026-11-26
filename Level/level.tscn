@@ -59,7 +59,6 @@ data = PackedVector3Array(-4, 2.5, 0.25, 4, 2.5, 0.25, -4, -2.5, 0.25, 4, 2.5, 0
 script = ExtResource("1_qmtf6")
 
 [node name="LevelTimer" parent="." unique_id=964813875 instance=ExtResource("2_52x1o")]
-level_time = 90
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=961055816]
 environment = SubResource("Environment_uawph")
