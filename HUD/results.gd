@@ -37,6 +37,8 @@ func level_results(time):
 		items = items.left(-2)
 		print(items)
 		$Title/MissingItems.text = "... But you missed the following items " + items
+	else: 
+		$Title/MissingItems.text = "And packed everything you needed!"
 	
 		
 	
